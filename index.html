@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Aion 2: Your First 3 Days to Sanctuary</title><style>
+:root{--bg:#f2f4f8;--surface:#fff;--line:#dbe0ec;--ink:#121829;--mute:#525c78;--sky:#0a7f76;--sky-t:#dcf1ee;--gold:#9a5c05;--gold-bg:#fbf1dc;--rose:#a92f43;--rose-bg:#fae8ec;--blue:#2860c4;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1526;--surface:#182038;--line:#2a3556;--ink:#e8ecf8;--mute:#9aa5c4;--sky:#4fd1c5;--sky-t:#15343a;--gold:#f0b85a;--gold-bg:#2a2416;--rose:#f0788a;--rose-bg:#2b1a22;--blue:#5b9bff;--on:#0f1526}}
+:root[data-theme="dark"]{--bg:#0f1526;--surface:#182038;--line:#2a3556;--ink:#e8ecf8;--mute:#9aa5c4;--sky:#4fd1c5;--sky-t:#15343a;--gold:#f0b85a;--gold-bg:#2a2416;--rose:#f0788a;--rose-bg:#2b1a22;--blue:#5b9bff;--on:#0f1526}
+*,*:before,*:after{box-sizing:border-box;margin:0}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px 16px;white-space:nowrap;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;padding:5px 13px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--mute);font-size:14px;font-weight:600;text-decoration:none}
+nav a:hover{color:var(--ink)}
+nav a.cur{background:var(--sky);border-color:var(--sky);color:var(--on)}
+main{max-width:760px;margin:0 auto;padding:0 18px 64px}
+.pg{padding-top:56px}
+.pg+.pg{margin-top:56px;border-top:1px solid var(--line)}
+h1{font-size:clamp(38px,9vw,64px);line-height:1.02;font-weight:800;letter-spacing:-.035em;margin-bottom:16px;max-width:16ch}
+h2{font-size:clamp(28px,6vw,38px);line-height:1.1;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}
+h3{font-size:18px;line-height:1.3;font-weight:700;margin-bottom:6px}
+.kick{color:var(--sky);font-weight:700;font-size:15px;margin-bottom:6px}
+.lead{color:var(--mute);font-size:18px;margin-bottom:20px;max-width:60ch}
+p{margin:0 0 10px}ul,ol{margin:0 0 8px;padding-left:20px}li{margin:4px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.g2,.g3{display:grid;gap:12px;margin-bottom:12px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.g2 .card,.g3 .card{margin-bottom:0}
+.tip,.warn{border:0;border-left:4px solid var(--gold);border-radius:4px 10px 10px 4px;background:var(--gold-bg)}
+.tip h3{color:var(--gold)}
+.warn{border-left-color:var(--rose);background:var(--rose-bg)}.warn h3{color:var(--rose)}
+.teal{color:var(--sky)}.gold{color:var(--gold)}.mute{color:var(--mute)}.sm{font-size:16px}.xs{font-size:14px}
+table{width:100%;border-collapse:collapse;border:0;border-top:2px solid var(--ink);margin-bottom:14px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);font-size:15.5px;vertical-align:top}
+th{color:var(--mute);font-size:13.5px;font-weight:700}td:first-child{font-weight:700;padding-right:16px}
+.num{flex:none;width:34px;height:34px;border-radius:9px;background:var(--sky);color:var(--on);font-weight:800;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.step{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;position:relative}.step>div:last-child{flex:1}.step p{margin:0}
+.step:has(+.step):before{content:"";position:absolute;left:16px;top:36px;bottom:-14px;width:2px;background:var(--line)}
+.g3:has(.tile){gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tile{background:var(--surface);padding:16px 18px}
+.tile .big{font-size:36px;font-weight:800;letter-spacing:-.02em;color:var(--sky);line-height:1}.tile .big.g{color:var(--gold)}.tile .t{font-size:14.5px;color:var(--mute);margin-top:8px;line-height:1.4}
+.flow{display:flex;align-items:stretch;margin-bottom:14px}
+.flow .n{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:15.5px}
+.flow .n b{display:block;color:var(--sky);font-size:16px;margin-bottom:2px}
+.flow .a{width:24px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:800}
+.lad{margin-bottom:14px}.lad .b{height:38px;border-radius:0 8px 8px 0;background:var(--sky);color:var(--on);display:flex;align-items:center;padding:0 14px;font-weight:800;font-size:19px;white-space:nowrap}.lad .b.g{background:var(--gold);color:#fff}.lad p{margin:5px 0 0;font-size:15.5px}
+.tr{display:flex;gap:14px;margin-bottom:12px}
+.tr .lb{flex:none;width:118px;border-radius:10px;padding:12px 10px;text-align:center;font-weight:800;background:var(--sky);color:var(--on);font-size:18px;line-height:1.2}
+.tr .lb.g{background:var(--gold);color:#fff}.tr .lb small{display:block;font-weight:600;font-size:12.5px;margin-top:4px}
+.tr .bd{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15.5px}.tr .bd ul{margin:0}
+.check{padding-left:0}.check li{list-style:none;position:relative;padding-left:28px}
+.check li:before{content:"";position:absolute;left:0;top:5px;width:16px;height:16px;border:2px solid var(--sky);border-radius:4px}
+@media (max-width:620px){.g2,.g3{grid-template-columns:1fr}.g3:has(.tile){grid-template-columns:1fr 1fr}.tr{flex-direction:column;gap:8px}.tr .lb{width:auto}.flow{flex-direction:column}.flow .a{width:auto;height:22px;transform:rotate(90deg)}.pg{padding-top:44px}.pg+.pg{margin-top:44px}}
+svg [fill="#182038"]{fill:var(--surface)}svg [stroke="#182038"]{stroke:var(--surface)}svg [fill="#2a3556"]{fill:var(--line)}svg [stroke="#2a3556"]{stroke:var(--line)}svg [fill="#f0b85a"]{fill:var(--gold)}svg [stroke="#f0b85a"]{stroke:var(--gold)}svg [fill="#4fd1c5"]{fill:var(--sky)}svg [stroke="#4fd1c5"]{stroke:var(--sky)}svg [fill="#e8ecf8"]{fill:var(--ink)}svg [stroke="#e8ecf8"]{stroke:var(--ink)}svg [fill="#9aa5c4"]{fill:var(--mute)}svg [stroke="#9aa5c4"]{stroke:var(--mute)}svg{max-width:100%;height:auto;margin-bottom:12px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.slot{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}.slot b{display:block;font-size:16px}.slot span{font-size:14.5px;color:var(--sky);font-weight:700}
+.qa{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}.qa:last-child{border-bottom:0}.qa .q{font-weight:700;margin-bottom:2px}.qa .a{font-size:16px;color:var(--mute)}
+@media (max-width:620px){.slots{grid-template-columns:1fr 1fr}}
+</style></head><body><nav><a href="#rules">Rules</a><a href="#timeline">Timeline</a><a href="#day1">Day 1</a><a href="#day1b">Reach 45</a><a href="#day2">Day 2</a><a href="#day3">Day 3</a><a href="#crafting">Crafting</a><a href="#loop">Alt loop</a><a href="#route">GS route</a><a href="#step12">Steps 1-2</a><a href="#step34">Steps 3-4</a><a href="#step5">Stage 4</a><a href="#daily">Weekly</a><a href="#shugo">Shugo</a><a href="#pets">Pets</a><a href="#soulbind">Soulbinds</a><a href="#shops">Shops</a><a href="#qa">Q&amp;A</a></nav><main>
+<section class="pg" id="top">
+<div class="kick" style="margin-top:30px">Early Global Progression Playbook</div>
+<h1>Aion 2: your first 3 days to Sanctuary</h1>
+<p class="lead">A step-by-step plan for leveling, alts, crafting, energy spending, gear routes, side systems and shops. Built from a creator's early-global plan video.</p>
+<div class="g3" style="margin-top:24px">
+<div class="tile"><div class="big">3</div><div class="t">alt characters to make (4 free slots)</div></div>
+<div class="tile"><div class="big">22</div><div class="t">level that unlocks Expeditions and Odyle Energy</div></div>
+<div class="tile"><div class="big">45</div><div class="t">max level: duties, Nightmare, Lower Abyss</div></div>
+<div class="tile"><div class="big g">1,400</div><div class="t">item level for Vakron</div></div>
+<div class="tile"><div class="big g">1,900</div><div class="t">item level for Transcendence Stage 2</div></div>
+<div class="tile"><div class="big g">2,100</div><div class="t">item level for Tier 3 content</div></div>
+</div>
+<div class="flow" style="margin-top:26px">
+<div class="n"><b>Days 1 to 3</b>Level main and alts, clear exploration content, start crafting</div><div class="a">&#9654;</div>
+<div class="n"><b>Weeks 1 to 2</b>Spend energy on the latest stage only, craft gear, climb item level</div><div class="a">&#9654;</div>
+<div class="n"><b>Sanctuary</b>Enter the Season 1 raid as early as comfortable</div>
+</div>
+<div class="card warn" style="margin-top:26px"><h3>Read this first</h3>
+<ul class="sm"><li>This is one player's <b>personal plan</b>, built on Taiwan/Korea experience and the Limited Sample Test (LST) build. Global may differ.</li>
+<li>Some figures, such as feather counts, were unclear in the source. Check them in game.</li>
+<li><b>Item level (GS)</b> is the gate for content. It is not the same as combat power.</li></ul></div>
+
+</section>
+<section class="pg" id="rules">
+<div class="kick">Mindset</div><h2>It is a journey, not a race</h2>
+<p class="lead">The creator has played 11 months and wants to reach endgame fast. He stresses you do not have to.</p>
+<div class="card"><ul class="sm">
+<li>You <b>cannot break your character</b>. If you do quests and dungeons, you will make gains.</li>
+<li>Reaching the Season 1 raid in week 2 vs week 5 does not put you far ahead. The main edge is a bit more pity progress.</li>
+<li>Min-maxing everything is not required and not always rewarded.</li>
+<li>Treat every video (including this plan) as a blueprint, not gospel. Enjoy the story, or min-max, or make gold, as you like.</li></ul></div>
+<div class="kick" style="margin-top:20px">The six rules behind the plan</div>
+<div class="step"><div class="num">1</div><div><h3>Energy is king</h3><p class="sm">Odyle Energy claims dungeon rewards. Every point counts, so unlock it early on every character.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Spend energy only on the latest stage you can enter</h3><p class="sm">Skip leveling dungeons and earlier stages. Open exactly 3 boxes (not 4) on exploration dungeons to claim one guaranteed piece.</p></div></div>
+<div class="step"><div class="num">3</div><div><h3>Alts feed the main</h3><p class="sm">Alts run low-tier dungeons for kina, crafting materials and dungeon gear. All of it goes to the main.</p></div></div>
+<div class="step"><div class="num">4</div><div><h3>Do not spend kina on temporary gear</h3><p class="sm">Enhancement stones come back when you dissolve gear. The kina does not. Only upgrade your belt and amulet.</p></div></div>
+<div class="step"><div class="num">5</div><div><h3>Skip open-world PvP and PvP gear</h3><p class="sm">Do only the time-sensitive weekly PvP events. Spend AP on stigma shards.</p></div></div>
+<div class="step"><div class="num">6</div><div><h3>Soulbinds later, except for game feel</h3><p class="sm">They add power, not item level. Only chase movement speed and combat speed early.</p></div></div>
+<div class="card tip"><h3>Why item level matters</h3><p class="sm" style="margin:0">Item level does not equal power. It is the <b>gate</b> to higher content. Early on you chase item level to enter content; power comes later.</p></div>
+</section>
+<section class="pg" id="timeline">
+<div class="kick">Overview</div><h2>The 3-day timeline</h2>
+<p class="lead">Day 3 is when true endgame begins. Days 1 and 2 are about unlocking energy and gathering item level.</p>
+<div class="tl">
+<div class="tr"><div class="lb">DAY 1<small>Level up</small></div><div class="bd"><ul><li>Main to 22, log off, alt to 22, repeat (3 alts)</li><li>Main to 45: grab duties, start Nightmare tickets</li><li>Peek into Lower Abyss for feathers</li><li>Spare time: alts to 45</li></ul></div></div>
+<div class="tr"><div class="lb">DAY 2<small>Explore</small></div><div class="bd"><ul><li>Finish alts to 45</li><li>Exploration content on every character: seal dungeons, strongholds, green quests</li><li>Main collects feathers and syncs monolith to alts</li><li>Belt and amulet to gold; Clash Runes to +1</li></ul></div></div>
+<div class="tr"><div class="lb g">DAY 3<small>Endgame starts</small></div><div class="bd"><ul><li>Exploration may bleed into today</li><li>Return to Abyss feathers (night if crowded): up to +52 item level</li><li>Set up crafting queue for AFK time</li></ul></div></div>
+<div class="tr"><div class="lb g">WEEKS<br>1 TO 2<small>Gear climb</small></div><div class="bd"><ul><li>Vakron chest (3 boxes) at 1,400</li><li>Alts feed main, craft accessories then weapon</li><li>1,900: Transcendence Stage 2</li><li>2,100: Tier 3, guard, armor, then Stage 4</li></ul></div></div>
+</div>
+<div class="kick" style="margin-top:16px">Odyle Energy in one page</div>
+<div class="g2">
+<div class="card"><h3>What it does</h3><p class="sm" style="margin:0">Spent at the end of dungeons to claim rewards. Builds per character once the Expedition menu is unlocked.</p></div>
+<div class="card"><h3>Why level 22 first</h3><p class="sm" style="margin:0">The mission at level 22 unlocks the Expedition menu, which starts the energy build. Crow Cave is often quoted at level 20, but the menu needs 22.</p></div>
+</div>
+<div class="card tip"><h3>You do not have to beat Crow Cave</h3><p class="sm" style="margin:0">Only unlocking the menu matters. Energy starts building right away, so unlock it on every character as early as possible.</p></div>
+</section>
+<section class="pg" id="day1">
+<div class="kick">Day 1, part 1</div><h2>Level 22, then alts</h2>
+<div class="step" style="margin-top:14px"><div class="num">1</div><div><h3>Create your main</h3><p class="sm">You get four free character slots at the start. The plan uses the main plus three alts.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Main to level 22</h3><p class="sm">Complete the level-22 mission to unlock the Expedition menu (not just the dungeon door). Energy starts building.</p></div></div>
+<div class="step"><div class="num">3</div><div><h3>Log off, make an alt, repeat</h3><p class="sm">Take each alt to 22 the same way. This front-loads energy on all four characters.</p></div></div>
+<div class="step"><div class="num">4</div><div><h3>Then push the main to 45</h3><p class="sm">Follow the main story quest. Handle exploration content only as it appears on your route.</p></div></div>
+<div class="card tip"><h3>Alt creation rule</h3><p class="sm" style="margin:0">You cannot create a character on a server that is full for creation unless you already have one there. If you do, you can make alts even when it is locked. The creator expects stable early servers.</p></div>
+<div class="kick" style="margin-top:8px">Exploration content: what it is</div>
+<table>
+<tr><th>Type</th><th>Gives</th><th>While leveling</th></tr>
+<tr><td>Seal dungeons</td><td>Materials, Daevanion crystals, skill points (global)</td><td>Only the ones on your way</td></tr>
+<tr><td>Strongholds</td><td>Belt upgrade material</td><td>Only on your way</td></tr>
+<tr><td>Feathers</td><td>Monolith stats; keys and amulet upgrade materials (global)</td><td>Main only, on the way</td></tr>
+<tr><td>Green quests</td><td>Village quests: click a spot or kill mobs</td><td>Only on your way</td></tr>
+</table>
+<div class="card"><h3>Ascension quests</h3><p class="sm" style="margin:0">During the main quest you hit "ascension quests" that block progress. To start one, fill the <b>ascension bar</b> (top right) using exploration content. That is why you still do seal dungeons and green quests on the way, but do not be a completionist while leveling alts.</p></div>
+</section>
+<section class="pg" id="day1b">
+<div class="kick">Day 1, part 2</div><h2>Feathers and the reasons to hit 45</h2>
+<div class="card"><h3>Feathers: only on your main</h3>
+<ul class="sm"><li>The <b>monolith is server-based</b>. Collect on your main, then press the <b>sync</b> button to give feathers to alts. Ignore feathers on alts.</li>
+<li>Roughly 186 feathers are needed to max the monolith (the source also mentions about 560 in inventory; the figures are unclear).</li>
+<li>Extra feathers can become power shards.</li></ul></div>
+<h3 style="margin-top:14px">Why reach 45 on day 1</h3>
+<div class="g2">
+<div class="card"><h3 class="teal">Duties</h3><p class="sm" style="margin:0">The only daily type. Unlocks at 45 and resets daily. Grab and do them immediately. Prioritize <b>petals</b> and <b>cube keys</b>.</p></div>
+<div class="card"><h3 class="teal">Nightmare</h3><p class="sm" style="margin:0">Solo boss content that pays currency for the trade shop. Tickets build at <b>2 per day</b>, so earlier 45 means an earlier final boss, <b>Colossus</b>, which gives big stats into season 2.</p></div>
+<div class="card" style="grid-column:1/-1"><h3 class="teal">Lower Abyss</h3><p class="sm" style="margin:0">Unlocks at 45 with its own feathers and monolith. It gives PvP stats (useless for you) but also points on the <b>PvP Daevanion board</b>, and each board level adds item level. All the Abyss feathers are worth up to <b>+52 item level</b>.</p></div>
+</div>
+<div class="card warn"><h3>The Abyss is PvP-enabled</h3><p class="sm" style="margin:0">Crowds appear fast after launch. The earlier you enter, the fewer players. If the vibes are bad, drop it and come back on day 3 (or at night).</p></div>
+<div class="card"><h3>Day 1 checklist</h3>
+<ul class="check sm"><li>Main and 3 alts at level 22 (Expeditions unlocked)</li><li>Main at 45, duties done</li><li>Nightmare tickets started</li><li>Tried Abyss feathers (skip if crowded)</li><li>Spare time: alts to 45</li></ul></div>
+<p class="xs mute">Streamer-event note: if an event pushes you to reach 45 first, the creator may rush the main to 45 before making alts. It costs a little energy, nothing major.</p>
+</section>
+<section class="pg" id="day2">
+<div class="kick">Day 2</div><h2>Exploration on every character</h2>
+<p class="lead">Finish alts to 45, then clear seal dungeons, strongholds, feathers and green quests on all four. This locks in power, Daevanion crystals and item level.</p>
+<div class="card"><ul class="sm"><li>This is slow. You may not finish all four characters in one day.</li>
+<li>Main collects all feathers, then syncs the monolith to alts.</li>
+<li>Collect upgrade materials for the <b>belt</b> and <b>amulet</b> on the way.</li></ul></div>
+<h3>Belt and amulet upgrade path</h3>
+<div class="flow">
+<div class="n"><b>Green</b>Level to +10</div><div class="a">&#9654;</div>
+<div class="n"><b>Blue</b>Morph, then +10</div><div class="a">&#9654;</div>
+<div class="n"><b>Gold</b>Stop here</div>
+</div>
+<div class="g2">
+<div class="card"><h3>How to morph</h3><p class="sm" style="margin:0">Use the Substance Morph menu, Gear tab, to upgrade to the next grade after +10. Repeat until gold.</p></div>
+<div class="card warn"><h3>Do not enhance gold</h3><p class="sm" style="margin:0">Too expensive early for too little gain. Settle on gold baseline.</p></div>
+</div>
+<div class="card"><h3>Clash Runes: go to +1 and stop</h3><p class="sm" style="margin:0">Each enhancement lowers the success rate and a failure <b>breaks the item</b>. Push Clash Runes to +1 for the item level. If you find more, you can push them further later.</p></div>
+<div class="card tip"><h3>Opposite faction map: likely skippable</h3><p class="sm" style="margin:0">On Taiwan and Korea the rift dungeons on the other faction's map gave the same rewards, so you had to clear them. On the LST, the Daevanion crystals and skill points were removed from those dungeons. If global matches, <b>you do not need to cross the rift</b>. If they return, you will.</p></div>
+<div class="card"><h3>Day 2 checklist</h3>
+<ul class="check sm"><li>Alts at 45</li><li>Seal dungeons, strongholds, green quests done on all characters</li><li>All feathers collected on main and synced</li><li>Belt and amulet at gold; Clash Runes at +1</li></ul></div>
+</section>
+<section class="pg" id="day3">
+<div class="kick">Day 3</div><h2>Abyss feathers, then endgame</h2>
+<div class="card"><h3>Back to the Abyss</h3><p class="sm" style="margin:0">Exploration will likely bleed into day 3. When done, return to the Abyss and check if crowds have thinned. If not, go <b>at night</b>. These feathers are essential for the item level needed to reach late content early.</p></div>
+<div class="card tip"><h3>What "endgame" means here</h3><p class="sm" style="margin:0">From now on the loop is: alts run dungeons, main spends energy on the latest stage possible, crafting runs while you are away, and item level climbs step by step.</p></div>
+<div class="kick" style="margin-top:14px">Crafting: your AFK engine</div>
+<ul class="sm"><li>Queue a large batch of crafts at once. They run back to back.</li>
+<li>Each craft gives a <b>flat amount of XP by craft level</b>, and that does not shrink as you level. So spamming the level-1 craft to max is legitimate.</li>
+<li>Level-1 crafts need almost no materials: buy the NPC or white basic ingredient (or from gatherers on the auction house) and send it.</li>
+<li>Whenever you go AFK or to sleep, queue crafts.</li></ul>
+<h3 style="margin-top:8px">Profession levels</h3>
+<div class="lad"><div class="b" style="width:40%">Novice 1</div><p>Spam the level-1 craft with basic ingredients.</p></div>
+<div class="lad"><div class="b" style="width:65%">Novice 50</div><p>A quest asks you to craft any item. Doing it lets you break into <b>Professional</b>.</p></div>
+<div class="lad"><div class="b g" style="width:85%">Professional 20 to 30</div><p>Reach 20 with level-1 ingredients, then bulk-craft <b>blue basic ingredients</b> to reach about 25 to 30 before crafting accessories.</p></div>
+<div class="card warn"><h3>Why level first</h3><p class="sm" style="margin:0">Crafting can fail. Success chance goes up with craft level, so level as high as practical before starting the expensive crafts.</p></div>
+</section>
+<section class="pg" id="crafting">
+<div class="kick">Crafting</div><h2>Which craft to level</h2>
+<p class="lead">Accessories are the best early investment, so <b>Handicrafting</b> comes first for everyone. A second craft makes your main weapon.</p>
+<table>
+<tr><th>Your class</th><th>Weapon craft</th><th>Notes</th></tr>
+<tr><td>Ranger, Chanter</td><td>Handicrafting</td><td>Bows and staves also come from it. One craft covers everything.</td></tr>
+<tr><td>Gladiator, Templar, Assassin, Cleric</td><td>Blacksmithing</td><td>Level it in addition to Handicrafting.</td></tr>
+<tr><td>Sorcerer, Spirit Master</td><td>Alchemy</td><td>Level it in addition to Handicrafting.</td></tr>
+</table>
+<h3>Crafting order for the main</h3>
+<div class="flow">
+<div class="n"><b>1</b>Necklace</div><div class="a">&#9654;</div>
+<div class="n"><b>2</b>Two earrings</div><div class="a">&#9654;</div>
+<div class="n"><b>3</b>Two rings</div><div class="a">&#9654;</div>
+<div class="n"><b>4</b>Weapon</div>
+</div>
+<div class="card"><h3>Why crafted gear is worth it on global</h3><ul class="sm"><li>Global crafted gear has no baseline PvE bonus like Taiwan/Korea, but it has <b>extra soulbind slots</b>. Every piece gets a base amount of lines, so crafted pieces are better.</li>
+<li>After the first craft you just <b>upgrade the same piece</b> as new patches add materials.</li></ul></div>
+<div class="card"><h3>The artisan base problem</h3>
+<p class="sm">A crafted endgame piece needs a <b>gold artisan base</b>. Making one yourself is a chain of procs:</p>
+<div class="flow" style="margin-bottom:8px">
+<div class="n" style="text-align:center"><b style="color:var(--ink)">White</b></div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b style="color:var(--sky)">Green</b></div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b style="color:var(--blue)">Blue</b></div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b class="gold" style="color:var(--gold)">Gold</b></div>
+</div>
+<p class="sm" style="margin:0">Each step has a proc chance: heavy RNG, slow and expensive early. The alternative is to <b>buy gold bases</b> from the auction house with kina made by your alts. The creator's guess is around 4 million kina (it is unclear whether that is per piece).</p></div>
+<div class="card tip"><h3>Failed procs are not trash</h3><p class="sm" style="margin:0">If a craft does not proc, keep it. These pieces are used in <b>supply deliveries</b>, so list them on the market or turn them in. Waiting also lowers auction prices as more crafters appear. If bases are too scarce, craft the chain yourself.</p></div>
+</section>
+<section class="pg" id="loop">
+<div class="kick">Endgame structure</div><h2>Alts feed the main</h2>
+<p class="lead">Content is split by star tier: conquest dungeons at 1, 2 and 3 stars, and Transcendence (1 star, split into stages that need more item level and pay more).</p>
+<svg viewBox="0 0 640 250" width="640" height="250" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:12px">
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f0b85a"/></marker></defs>
+<rect x="6" y="20" width="220" height="190" rx="14" fill="#182038" stroke="#2a3556"/>
+<text x="116" y="50" fill="#4fd1c5" font-size="19" font-weight="700" text-anchor="middle" font-family="DejaVu Sans">3 ALTS</text>
+<text x="116" y="82" fill="#e8ecf8" font-size="14.5" text-anchor="middle" font-family="DejaVu Sans">Run 1-star and 2-star</text>
+<text x="116" y="102" fill="#e8ecf8" font-size="14.5" text-anchor="middle" font-family="DejaVu Sans">conquest dungeons</text>
+<text x="116" y="140" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">Earn kina, crafting</text>
+<text x="116" y="158" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">materials, dungeon gear</text>
+<text x="116" y="185" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">Do exploration too</text>
+<rect x="414" y="20" width="220" height="190" rx="14" fill="#182038" stroke="#f0b85a"/>
+<text x="524" y="50" fill="#f0b85a" font-size="19" font-weight="700" text-anchor="middle" font-family="DejaVu Sans">MAIN</text>
+<text x="524" y="82" fill="#e8ecf8" font-size="14.5" text-anchor="middle" font-family="DejaVu Sans">Spends energy only on</text>
+<text x="524" y="102" fill="#e8ecf8" font-size="14.5" text-anchor="middle" font-family="DejaVu Sans">the latest stage possible</text>
+<text x="524" y="140" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">Crafts accessories, weapon,</text>
+<text x="524" y="158" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">upgrades crafted gear,</text>
+<text x="524" y="176" fill="#9aa5c4" font-size="13.5" text-anchor="middle" font-family="DejaVu Sans">turns in supply deliveries</text>
+<line x1="230" y1="90" x2="408" y2="90" stroke="#f0b85a" stroke-width="3" marker-end="url(#ar)"/>
+<text x="319" y="78" fill="#f0b85a" font-size="13" text-anchor="middle" font-family="DejaVu Sans">kina, mats, gear</text>
+<line x1="408" y1="150" x2="230" y2="150" stroke="#4fd1c5" stroke-width="3" marker-end="url(#ar)"/>
+<text x="319" y="176" fill="#4fd1c5" font-size="14" text-anchor="middle" font-family="DejaVu Sans">item level gain</text>
+<text x="319" y="238" fill="#9aa5c4" font-size="13" text-anchor="middle" font-family="DejaVu Sans">Transfer items through the warehouse</text>
+</svg>
+<div class="g2">
+<div class="card"><h3>Main's job</h3><ul class="sm"><li>Enter the latest stage without wasting energy on earlier ones</li><li>Prioritize content with <b>guaranteed</b> gains</li><li>Prefer 3-star over 2-star over 1-star dungeons</li></ul></div>
+<div class="card"><h3>Alts' job</h3><ul class="sm"><li>Run low-tier stages for kina and mats</li><li>Get specific dungeon gear for supply requests</li><li>Later: Shugo Festival for stigma shards</li></ul></div>
+</div>
+<div class="card tip"><h3>Do not open boxes in the main story dungeons</h3><p class="sm" style="margin:0">Those boxes only give low-level trash gear, so save the energy. The exceptions are the exploration dungeons at 45 (next pages).</p></div>
+<div class="card"><h3>Not in the 1,900 plan yet?</h3><p class="sm" style="margin:0">If you cannot enter Stage 2, run <b>Stage 1</b> for gains first. Then move up to Stage 2 to collect cards.</p></div>
+</section>
+<section class="pg" id="route">
+<div class="kick">Item level (GS) route</div><h2>Five steps to Sanctuary</h2>
+<p class="lead">Item-level (GS) goals from the video. Each step names the content to run and where the energy goes.</p>
+<div class="lad"><div class="b" style="width:30%">~1,000</div><p><b>Fresh 45.</b> Story-quest gear. Exploration content lifts you to about 1,500.</p></div>
+<div class="lad"><div class="b" style="width:42%">1,400</div><p><b>Step 1.</b> Vakron unlocks. Open 3 boxes, claim the chest piece (120 energy). Then start crafting.</p></div>
+<div class="lad"><div class="b" style="width:60%">1,900</div><p><b>Step 2.</b> Transcendence Stage 2: guaranteed green Arcana, chance at more.</p></div>
+<div class="lad"><div class="b" style="width:74%">2,100</div><p><b>Step 3.</b> Ferocious Horn Den exploration: 3 boxes, but do not claim yet.</p></div>
+<div class="lad"><div class="b" style="width:88%">Ferocious Horn Den</div><p><b>Step 4.</b> Tier 3 conquest, 28 runs: Nuakum armor and a guard via pity.</p></div>
+<div class="lad"><div class="b g" style="width:100%">Stage 4 &rarr; Sanctuary</div><p><b>Step 5.</b> Gold Arcana, proper class cards, then enter the Season 1 raid.</p></div>
+<div class="card tip"><h3>Rule of thumb</h3><p class="sm" style="margin:0">If you are short on item level at any step: <b>tap more enhancement</b> (+1 per level), use <b>higher-grade mana stones</b>, or run the exploration dungeon three times for an <b>item level 62</b> piece.</p></div>
+<div class="card"><h3>Where item level comes from</h3>
+<table style="margin:0"><tr><th>Source</th><th>Notes</th></tr>
+<tr><td>Gear base level</td><td>Added straight into your character's item level</td></tr>
+<tr><td>Enhancement</td><td>+1 per enhancement</td></tr>
+<tr><td>Mana stones</td><td>Extra lines on gear</td></tr>
+<tr><td>Daevanion boards</td><td>Regular and PvP board levels</td></tr>
+<tr><td>Arcana</td><td>Green card is worth 40</td></tr></table></div>
+</section>
+<section class="pg" id="step12">
+<div class="kick">Steps 1 and 2</div><h2>Vakron and quest gear</h2>
+<div class="step"><div class="num">1</div><div><h3>Vakron exploration, 3 boxes</h3><p class="sm">At 1,400 item level (you will be near 1,500 after exploration content). Open the end box <b>three times</b> to claim one guaranteed piece. Take the <b>chest piece</b>. Cost: <b>120 energy</b>.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Alts run dungeons, main crafts</h3><p class="sm">Feed kina and mats to the main. Buy or craft gold bases and make the crafted necklace, earrings and rings, then the weapon.</p></div></div>
+<div class="kick" style="margin-top:6px">Upgrade only these from your quest gear</div>
+<table>
+<tr><th>Item</th><th>What to do</th></tr>
+<tr><td>Blue Liberator bracelet, gold Ascension bracelet</td><td>Push to <b>+10 and +11</b>. You will not replace them for a long time. Socket intermediate mana stones and soul stones until you get at least one blue and one green result.</td></tr>
+<tr><td>Any higher-end gold gear you find</td><td>Push to <b>+11</b> with intermediate mana stones.</td></tr>
+<tr><td>Blues (story or exploration)</td><td>Only if you need item level: up to <b>+3</b> with lesser mana stones.</td></tr>
+<tr><td>Rest of the quest gear</td><td>Leave it. Only enhance later if truly needed.</td></tr>
+</table>
+<div class="step"><div class="num">3</div><div><h3>Reach 1,900 with crafted gear</h3><p class="sm">Once accessories and weapon are crafted and quest gear is upgraded, you should be near the Stage 2 requirement.</p></div></div>
+<div class="card"><h3>Transcendence Stage 2: what to expect</h3><ul class="sm"><li>Guaranteed <b>green</b> Arcana cards</li><li>Chance at the chalice</li><li>Possibly around a 50% chance for <b>blue</b> cards</li><li>The first content you farm on your main after the exploration stops</li></ul></div>
+<div class="card tip"><h3>Arcana in Season 1</h3><p class="sm" style="margin:0">One dungeon drops the <b>bell and compass</b>; the other drops the <b>parchment and mirror</b>. The chalice comes only from higher levels. Just fill the slots. Do <b>not</b> farm for specific set effects or skills: you will replace them.</p></div>
+</section>
+<section class="pg" id="step34">
+<div class="kick">Steps 3 and 4</div><h2>2,100 and Ferocious Horn Den</h2>
+<div class="step"><div class="num">3</div><div><h3>Ferocious Horn Den (Tier 3 exploration): open 3, claim nothing yet</h3><p class="sm">At 2,100 with crafted gear and Arcana in place. Cost again 120 energy. Do <b>not</b> claim the piece yet: you will pick it later based on how your conquest luck goes. The boxes can still drop a rare item and better blues.</p></div></div>
+<div class="step"><div class="num">4</div><div><h3>Run Ferocious Horn Den (Tier 3 conquest) 28 times</h3><p class="sm">This dungeon drops the Nuakum gear: the armor and the guard that your crafted weapon and accessories do not cover.</p></div></div>
+<div class="kick" style="margin-top:6px">The pity math</div>
+<div class="flow">
+<div class="n"><b>14 runs</b>Claim 2 chests every run</div><div class="a">&#9654;</div>
+<div class="n"><b>Pity</b>On global it includes a ticket</div><div class="a">&#9654;</div>
+<div class="n"><b>2 tickets</b>Craft a guard (28 runs)</div>
+</div>
+<div class="card"><h3>Why not just craft the guard?</h3><p class="sm" style="margin:0">Crafting a guard is as demanding as crafting a weapon. This route guarantees gear while saving crafting resources.</p></div>
+<h3 style="margin-top:6px">Upgrade crafted gear while you run</h3>
+<div class="flow">
+<div class="n" style="text-align:center"><b style="font-size:15px">Star / True Dragon</b>ilvl 70</div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b style="font-size:15px">Splendent</b></div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b style="font-size:15px">Dark Dragon</b></div><div class="a">&#9654;</div>
+<div class="n" style="text-align:center"><b style="font-size:15px">Ebony</b></div>
+</div>
+<ul class="sm"><li>Upgrade the <b>weapon first</b> (to Dark Dragon, then Ebony), then the accessories the same way.</li>
+<li>Each tier costs higher-tier ingredients. On global the cost is materials, not kina.</li>
+<li>Kina and mats come from the alts and from your own transcendence runs.</li></ul>
+<div class="card tip"><h3>After the second pity ticket</h3><ul class="sm"><li>Claim the guard.</li><li>Go back and claim the <b>Ferocious Horn Den piece</b> you are missing.</li><li>Priority: <b>boots and gloves</b>, for their soulbind lines.</li><li>A full set is not required.</li></ul></div>
+</section>
+<section class="pg" id="step5">
+<div class="kick">Step 5</div><h2>Stage 4 and the Sanctuary</h2>
+<div class="step"><div class="num">5</div><div><h3>Farm gold Arcana in Stage 4</h3><p class="sm">Even without a full set you will have enough item level. Now farm the <b>proper</b> Arcana for the skills and passives your class needs.</p></div></div>
+<div class="card"><h3>What to do at this stage</h3><ul class="sm"><li>Keep making kina and mats from the alts and from Transcendence runs.</li>
+<li>Craft the gear slots you did not get from dungeons.</li>
+<li>Keep upgrading crafted gear (Dark Dragon, then Ebony).</li>
+<li>Continue like this all the way to the Season 1 raid.</li></ul></div>
+<div class="card tip"><h3>Two-week goal</h3><p class="sm" style="margin:0">The whole path above is the creator's plan for the first two weeks, ending with entering <b>Ludra (the Sanctuary)</b>. The video does not give an item-level number for it (the earlier Welps guide says 2,800).</p></div>
+<h3 style="margin-top:6px">Energy spending cheat sheet</h3>
+<table>
+<tr><th>Content</th><th>Spend energy?</th></tr>
+<tr><td>Leveling and story dungeons</td><td>No</td></tr>
+<tr><td>Exploration dungeons at 45</td><td>Yes: exactly 3 boxes (120), claim one piece</td></tr>
+<tr><td>Vakron exploration</td><td>Yes: 3 boxes, chest piece</td></tr>
+<tr><td>Ferocious Horn Den exploration</td><td>Yes: 3, claim later</td></tr>
+<tr><td>Transcendence Stage 1 to 4</td><td>Yes: as high a stage as you can enter</td></tr>
+<tr><td>Chests Ferocious Horn Den (28 runs)</td><td>Yes: 2 chests per run for pity</td></tr>
+<tr><td>Earlier tiers</td><td>Alts only, for kina and mats</td></tr>
+</table>
+<div class="card"><h3>Weekly energy top-up</h3><p class="sm" style="margin:0">Each week, convert Odyle energy in the Substance Morph menu and buy the sub-shop energy. The creator says this is about <b>20 full double-claim dungeon runs</b>. The battle pass also adds energy.</p></div>
+</section>
+<section class="pg" id="daily">
+<div class="kick">Daily and weekly systems</div><h2>Do these late in the week</h2>
+<div class="card tip"><h3>Performance-based content</h3><p class="sm" style="margin:0">Daily dungeon, Nightmare and Ascension Trial rewards <b>scale with your performance</b>. The creator runs them on the <b>last day of the week</b>, when the main is strongest, even on alts (they gain gear from dungeons too).</p></div>
+<div class="g2">
+<div class="card"><h3>Ascension Trial</h3><p class="sm" style="margin:0">Character-based. Gives enhancement stones, mana stones and pet souls. Run as late as possible in the week.</p></div>
+<div class="card"><h3>Daily dungeon</h3><p class="sm" style="margin:0">Also gives petals on each character. This is why you barely need to farm pets.</p></div>
+</div>
+<h3 style="margin-top:6px">Supply requests</h3>
+<p class="sm">Daily and weekly quests that pay <b>AP (uncapped, precious)</b> and enhancement material. Do as many as you can without breaking the bank. Buying items to turn in is usually too expensive for the AP.</p>
+<table>
+<tr><th>Request type</th><th>Advice</th></tr>
+<tr><td>Dungeon gear</td><td>Send an alt to run the dungeon for that piece, then pass it to the main through the warehouse.</td></tr>
+<tr><td>Crafted gear</td><td>Worth doing. Extras and failed procs sell well on the market.</td></tr>
+<tr><td>Refining stones</td><td>Worth turning in.</td></tr>
+<tr><td>Odyle, raw leather, etc.</td><td>Skip early: expensive, and AP reward is small.</td></tr>
+</table>
+<div class="card"><h3>World bosses (open map)</h3><p class="sm" style="margin:0">Give boxes with loot you can turn in on the supply tab for more AP. That tab resets each season and the bosses take long to kill early, so do not rush them.</p></div>
+<div class="card"><h3>Before the first weekly reset (assumed Wednesday)</h3><ul class="sm"><li>At 45, buy the <b>weekly contracts</b> from the command merchants: they carry over to the next week.</li><li>Convert Odyle energy in Substance Morph and buy sub-shop energy.</li></ul></div>
+</section>
+<section class="pg" id="shugo">
+<div class="kick">Shugo Festival and Invasion</div><h2>Wait for max level</h2>
+<div class="card"><ul class="sm"><li>Keys regenerate <b>3 per day per server</b>. They are server-bound, so run them on your <b>main</b>.</li>
+<li>Rewards are level-bound, so do not start 'til you reach max level.</li>
+<li>Not time-sensitive: keys cap out after about a week.</li></ul></div>
+<div class="g2">
+<div class="card"><h3>What it gives</h3><ul class="sm"><li>Odyle and artisan stones (your main source of <b>radiant and pure Odyle</b>)</li><li>Tokens for the festival shop</li><li>Stigma shards (new on global)</li></ul></div>
+<div class="card"><h3>Shop priority</h3><ol class="sm" style="padding-left:20px;margin:0"><li>Daevanion crystals (empty the category)</li><li>Stigma shards</li><li>Radiant Odyle only if a craft is blocked</li></ol></div>
+</div>
+<h3>Shugo mini-game trick</h3>
+<p class="sm">Rewards depend on ranking. Finish outside the top two and you get nothing, so leave the event. On the LST one mini-game worked like this, and everyone reached first or second:</p>
+<div class="flow">
+<div class="n"><b>1 player</b>Runs around grabbing every orb each round</div><div class="a">&#9654;</div>
+<div class="n"><b>Everyone else</b>Stands on the five correct tiles</div><div class="a">&#9654;</div>
+<div class="n"><b>Goal</b>500 points total, max rewards for all</div>
+</div>
+<p class="xs mute">The creator waits a few days for players to learn the mini-games before trying this.</p>
+<div class="card"><h3>Gathering: skip it early</h3>
+<ul class="sm"><li>It is time-consuming but mandatory for crafting. Best used to <b>sell</b> to players who skip it.</li>
+<li>Leveling mirrors crafting: Novice to 50, gather a specific node for the quest, then Professional to 50.</li>
+<li>No energy system: gather as long as you like.</li></ul></div>
+<div class="card"><h3>Gathering skill points</h3>
+<ul class="sm"><li><b>Left side (passives):</b> raise the success gauge and reduce fail buildup.</li>
+<li><b>Right side (node specializations):</b> see nodes on the minimap; double-proc; chance to upgrade mat tier.</li>
+<li>Focus <b>Odyle</b> first (it morphs into everything), then something convenient such as herbs.</li>
+<li>Skills reset cheaply, so do not level gathering on alts.</li></ul></div>
+</section>
+<section class="pg" id="pets">
+<div class="kick">Pets, Genus Insight and kina</div><h2>Ignore at first, then set up</h2>
+<p class="lead">These give <b>power, not item level</b>, so they are not the early priority.</p>
+<div class="g2">
+<div class="card"><h3>Pets</h3><ul class="sm"><li>Collect pets on the way while leveling</li><li>Daily dungeons on each character give petals, so leveling needs little farming</li><li>Some pets cannot be farmed (story bosses, dungeon bosses): snipe them from the Black Cloud merchant</li></ul></div>
+<div class="card"><h3>Genus Insight</h3><ul class="sm"><li>Streamlined on global</li><li>Cube keys from the monolith on 2 characters can bring all to <b>level 10</b></li><li>Gives many rainbow crystals, then grind for stats</li><li>Stats differ from Korea: the creator plans a separate video</li></ul></div>
+</div>
+<div class="card"><h3>Open-world kina farming</h3><ul class="sm"><li>Grind mobs up to a <b>daily cap of about 1 million kina</b>. After that, loot is restricted.</li>
+<li>Gold drops from mobs sell well early on the auction house, but the creator advises keeping them for <b>soulbind and transfer material</b>.</li></ul></div>
+<div class="card"><h3>Where not to spend kina while leveling</h3><ul class="sm"><li>Do <b>not</b> enhance gear you will replace.</li><li>Dissolving returns enhancement stones but <b>not kina</b>, and kina is scarce early.</li><li>The only exception: belt and amulet.</li></ul></div>
+<div class="card tip"><h3>Season shop materials</h3><p class="sm" style="margin:0">The season shop's materials tab (Odyle, draconic ingredients) is mostly bound, but on the LST it could be moved to server storage. Buy these on <b>alts</b> and keep the main's tokens for the Season 1 base wings (Talisra Wings).</p></div>
+<div class="card"><h3>Ping</h3><p class="sm" style="margin:0">A network patch made ping much less of an issue. Even 100 to 150 ping costs a bit of damage but nothing huge. <b>Dodging</b> is the main thing affected. You can play any class.</p></div>
+</section>
+<section class="pg" id="soulbind">
+<div class="kick">Soulbinds</div><h2>The biggest early pitfall</h2>
+<p class="lead">Soulbinds add power, not item level. Do not hunt for them early. Only reroll for game feel:</p>
+<div class="slots">
+<div class="slot"><b>Boots</b><span>Movement speed</span></div>
+<div class="slot"><b>Earrings</b><span>Movement speed</span></div>
+<div class="slot"><b>Gloves</b><span>Combat speed</span></div>
+<div class="slot"><b>Weapon</b><span>Combat speed</span></div>
+<div class="slot"><b>Guard</b><span>Combat speed</span></div>
+<div class="slot"><b>Necklace</b><span>Combat speed</span></div>
+</div>
+<div class="card"><h3>Once you have a crafted weapon</h3><ul class="sm"><li>Use <b>soul codexes</b> (quest rewards, Twitch drops) in the Reset tab on the weapon.</li>
+<li>Keep rerolling 'til you have <b>two usable stats</b>, or combat speed, or a rare line like damage boost.</li>
+<li>Then repeat on the <b>necklace and earrings</b>.</li></ul></div>
+<div class="kick" style="margin-top:10px">PvP and Abyss Points (AP)</div>
+<div class="g2">
+<div class="card"><h3>Skip</h3><ul class="sm"><li>Open-world PvP: early on everyone is an unranked trainee, ~300 AP per kill</li><li>PvP gear: Kanis gear is only ilvl 62 and costly in AP; Star/True Dragon crafted is ilvl 70</li></ul></div>
+<div class="card"><h3>Do</h3><ul class="sm"><li>Weekly and timed events: war bosses, sieges, battlegrounds (medals and bonus AP)</li><li>Join sieges and world bosses via LFG: presence alone gives most weekly AP</li><li>Abyssal corridors if your faction wins artifacts</li></ul></div>
+</div>
+<div class="card"><h3>Spend AP on stigma shards</h3><p class="sm" style="margin:0">10,000 AP each on global. Some classes do not function without specific skills at specific levels. AP from hunting is cumulative, so you can catch up later.</p></div>
+<div class="card tip"><h3>Battle passes</h3><p class="sm" style="margin:0">One Odyle (energy) pass and one cosmetic pass. Buy both on the main, and the energy pass on alts too if allowed.</p></div>
+</section>
+<section class="pg" id="shops">
+<div class="kick">Shops and money</div><h2>What to buy, what to sell</h2>
+<table>
+<tr><th>Shop</th><th>Buy first</th><th>Notes</th></tr>
+<tr><td>Nightmare shop</td><td>Stigma shards</td><td>Keep at least <b>14,000 tokens</b> for the Zikel Statue as fast as possible.</td></tr>
+<tr><td>Shugo Festival shop</td><td>Daevanion crystals, then stigma shards</td><td>Radiant Odyle only if a craft needs it.</td></tr>
+<tr><td>Abyss shop</td><td>Stigma shards</td><td>Ignore PvP gear.</td></tr>
+<tr><td>Season shop</td><td>Materials tab on alts</td><td>Keep main's tokens for Talisra Wings.</td></tr>
+</table>
+<div class="kick">Making kina on the auction house</div>
+<div class="card"><p class="sm">Players like the creator burn steps by buying from others. You earn kina by slowing your own progression a bit. Ideas:</p>
+<ul class="sm"><li><b>Gathering</b>: sell ingredients to crafters who want to level fast.</li>
+<li><b>Artisan bases</b>: sell gold bases at a premium to players skipping the chain.</li>
+<li><b>Kina to token conversion</b>: turn kina into boxes, sell them for the premium currency, then use that for battle passes or to rebuy kina later when the price falls. Early on, buying kina is poor value (about $50 for 2M kina).</li></ul></div>
+<div class="card warn"><h3>Trade-offs and limits</h3><ul class="sm"><li>Selling your kina slows your own gear, so it is a long-term play.</li><li><b>No cross-server trading</b>: the world market is expected to stay closed for all of Season 1.</li></ul></div>
+<div class="card"><h3>Stats and alt classes</h3><ul class="sm"><li><b>All classes go offense</b>, no exception. See the creator's PvE building guide for details.</li>
+<li>Alt classes do not matter much: pick ones you like, gear them with dungeon gear, maybe cheap crafted accessories later.</li>
+<li>Realistic ring goal: <b>two main skills at level 20</b> (three were easy on Korea, but global rings are busier).</li></ul></div>
+</section>
+<section class="pg" id="qa">
+<div class="kick">Q&amp;A quick answers</div><h2>Common questions</h2>
+<div class="qa"><div class="q">Do I have to beat Crow Cave at 22?</div><div class="a">No. Unlock the Expedition menu and energy starts building.</div></div>
+<div class="qa"><div class="q">Where do I spend energy?</div><div class="a">Not on leveling dungeons. Exactly 3 boxes on the latest exploration dungeon, then the highest stage you can enter (Transcendence), preferring 3-star over 2- and 1-star.</div></div>
+<div class="qa"><div class="q">Is crafted gear good for PvE on global?</div><div class="a">Yes, thanks to extra soulbind lines and easy upgrading over time. No baseline PvE bonus, unlike Taiwan/Korea.</div></div>
+<div class="qa"><div class="q">Is buying PvP gear worth it early?</div><div class="a">No. It is ilvl 62 vs 70 for crafted, and AP is better spent on stigma shards. PvE gains come first.</div></div>
+<div class="qa"><div class="q">How do I get AP without PvP?</div><div class="a">Shugo Festival, supply deliveries, duties, weekly contracts, joining sieges and world bosses through LFG, and abyssal corridors.</div></div>
+<div class="qa"><div class="q">How do I spend kina while leveling?</div><div class="a">Nowhere, except belt and amulet upgrades.</div></div>
+<div class="qa"><div class="q">Best weekly prep before the first reset?</div><div class="a">Buy weekly contracts at 45 (they carry over) and claim all weekly energy from Substance Morph and the sub shop.</div></div>
+<div class="qa"><div class="q">Should I kill world bosses early?</div><div class="a">Not urgently. Open-world ones feed supply AP but reset seasonally. Abyss bosses are timed, so do them if you PvP.</div></div>
+<div class="qa"><div class="q">Best way to gear alts?</div><div class="a">Dungeon gear from their own runs. Optionally cheap crafted accessories. Later, Shugo Festival for stigma shards.</div></div>
+<div class="qa"><div class="q">Which class suffers least from ping?</div><div class="a">Ping mainly affects dodging. After the network patch you can play anything.</div></div>
+<div class="qa"><div class="q">Are some Shugo games faster?</div><div class="a">You need a top-two finish. See the orb-and-tiles trick in the Shugo Festival section.</div></div>
+<div class="qa"><div class="q">Does gathering have an energy limit?</div><div class="a">No. Do not level extra node types on alts.</div></div>
+<div class="qa"><div class="q">Cross-server trading at launch?</div><div class="a">No. The world market is closed, probably all of Season 1.</div></div>
+<div class="qa"><div class="q">Can I max Genus Insight early?</div><div class="a">Yes: level 10 for all of it using monolith cube keys from two characters. Keys are more plentiful on global.</div></div>
+<div class="qa"><div class="q">Where do draconic ingredients come from?</div><div class="a">Conquest dungeons: gold ones and also blue ones.</div></div>
+</section>
+</main><script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var links=[].slice.call(document.querySelectorAll('nav a')),map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var a=map[e.target.id];if(!a)return;
+      links.forEach(function(l){l.classList.remove('cur')});
+      a.classList.add('cur');
+      var nav=a.parentNode;nav.scrollLeft=a.offsetLeft-nav.clientWidth/2+a.offsetWidth/2;
+    });
+  },{rootMargin:'-15% 0px -75% 0px'});
+  [].forEach.call(document.querySelectorAll('main section[id]'),function(s){io.observe(s)});
+})();
+</script>
+</body></html>
